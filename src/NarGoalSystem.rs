@@ -711,6 +711,7 @@ fn deriveGoalsHelper(sampledGoal: &Sentence, sampledDepth:i64, strategy:EnumGoal
             //dbg(&format!("sampleAndInference() found belief candidates #={}", evidenceCandidates.len()));
 
             // * try to do inference
+            use EnumGoalDerivationStrategy::*;
             match strategy {
                 ALL_BELIEFS => {
                     for iBelief in &evidenceCandidates {

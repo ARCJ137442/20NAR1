@@ -43,7 +43,6 @@
 use std::path::Path;
 use std::fs;
 use rusqlite::{Connection, Result, params};
-use rusqlite::NO_PARAMS;
 
 // stores the NN as a sqlite database
 fn nn_store(nn:&NeuralNetwork) -> Result<()> {
@@ -64,11 +63,11 @@ fn nn_store(nn:&NeuralNetwork) -> Result<()> {
             valueid integer not null,
             value real not null
          )",
-        NO_PARAMS,
+        [],
     )?;
 
     // make faster write
-    conn.execute("PRAGMA synchronous=OFF;",NO_PARAMS)?;
+    conn.execute("PRAGMA synchronous=OFF;",[])?;
 
     for i_idx_layer in 0..nn.layers.len() {
         let ilayer = &nn.layers[i_idx_layer];
@@ -104,7 +103,7 @@ fn nn_load() -> Result<(NeuralNetwork)> {
 
 
     // make faster write
-    conn.execute("PRAGMA synchronous=OFF;",NO_PARAMS)?;
+    conn.execute("PRAGMA synchronous=OFF;",[])?;
 
     let mut n_layers:i64 = 0;
     {

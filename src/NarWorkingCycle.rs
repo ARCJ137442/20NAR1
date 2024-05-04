@@ -1101,7 +1101,7 @@ pub fn createMem2(cfg__maxComplexity: i64, cfg__nConceptBeliefs:usize)->Arc<RwLo
 
         let sharedArc:Arc<RwLock<DeclarativeShared>> = Arc::clone(&resArc.read().shared);
         let globalQaHandlers = Arc::clone(&resArc.read().globalQaHandlers);
-        let cfg__nConceptBeliefs = cfg__nConceptBeliefs;
+        // let cfg__nConceptBeliefs = cfg__nConceptBeliefs;
 
         resArc.write().deriverWorkers.push(thread::spawn(move|| {
             let cfgEnInstrumentation = false;
